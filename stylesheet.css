@@ -1,0 +1,121 @@
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'poppins',sans-serif;
+}
+body
+{
+    color:rgb(235, 235, 235)
+}
+.header
+{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:20px 10%;
+    background:transparent;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:100;
+}
+.logo
+{
+    position:relative;
+    font-size:25px;
+    color:antiquewhite;
+    text-decoration:none;
+    font-weight:600;
+}
+.navbar a{
+
+    display:inline-block;
+    color:blanchedalmond;
+    text-decoration:none;
+    font-size:25px;
+    font-weight:500;
+    margin-left: 35px;
+    transition: .3s;
+}
+.navbar a:hover{
+    color:#0ef;
+    font-size:20px;
+}
+.home{
+    position:relative;
+    width:100%;
+    justify-content:space-between; 
+    min-height:100vh;
+    background-color: deepskyblue;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items:center;
+    padding:70px 10% 0;
+
+}
+.glow-ring{
+    width:260px;
+    height:260px;
+    border-radius: 50%;
+    padding: 8px;
+    background:url(canva.png) no-repeat;
+    box-shadow:#3333;
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.home-content{
+    max-width:600px;
+}
+.home-content h3{
+    font-size:32px;
+    font-weight:700px;
+    margin: -3px 0;
+}
+.home-content p{
+    font-size:20px;
+}
+.home-sci a{
+    display:inline-flex;
+    justify-content: center;
+    align-items:center;
+    width:40px;
+    height:40px;
+    background:transparent;
+    border: 2px solid rgb(81, 17, 123);
+    border-radius:50%;
+    font-size: 20px;
+    color:aquamarine;
+    text-decoration: none;
+    margin:30px 15px 30px 0;
+
+}
+.home-sci a:hover{
+    background:light greenyellow;
+    color: #0939;
+    box-shadow: 0 0 20px;
+}
+.btn-box{
+    display: inline-flex;
+    padding: 13px 28px;
+    background:orange;
+    border-radius:10px;
+    font-size:16px;
+    color: #0453b5;
+    letter-spacing:1px;
+    text-decoration:none;
+    font-weight: 600px;
+
+}
+.btn-box:hover
+{
+
+}
+
+
