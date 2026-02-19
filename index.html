@@ -1,54 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>Portfolio</title>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE-edge">
-        <meta name="portfolio" content="width=device-widht" initial-scale="1.0">
-        <link rel="stylesheet" href="stylesheet.css">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        
-
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
     <body>
-        <header class="header">
-            <a href="#" class="logo">portfolio</a>
 
+<header class="header">
+    <a href="#" class="logo">Portfolio</a>
 
-        <nav class="Navbar">
-            <a href="#">HOME</a>
-            <a href="#">ABOUT</a>
-             <a href="#">Skill</a>
-              <a href="#">PORTFOLIO</a>
-               <a href="#">CONTACT</a>
-        </nav>
-        </header>
-      <section class="home">
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="home">
     <div class="home-content">
         <h3>Hi, I'm Ranjith</h3>
         <h2>I am a Full Stack Developer</h2>
-        <h3>And I am a university volleyball player...<span class="text"></span></h3>
+        <h3>And I am a university volleyball player <span class="text"></span></h3><br>
 
         <p>
-            I'm a full stack developer with 0 years experience — I'm a fresher and<br>
-            I have learned HTML, CSS, JavaScript, Node.js, Bootstrap, MongoDB, Flask, Tkinter, etc.
+            I'm a full stack developer — fresher.<br><br>
+            Skilled in HTML, CSS, JavaScript, Node.js, MongoDB, Flask, Tkinter.
         </p>
 
         <div class="home-sci">
-
-  
-            <a href="#"> <i  class='bx bxl-facebook-circle'></i></a>
-             <a href="#"> <i  class='bx bxl-instagram' ></i></i></a>
-             <a href="#"> <i  class='bx bxl-github' ></i></i></a>
-             <a href="#"> <i  class='bx bxl-whatsapp' ></i></i></a>
+            <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-github'></i></a>
+            <a href="#"><i class='bx bxl-whatsapp'></i></a>
         </div>
-        <a href="#"> <i class="btn-box">More About Me</i>
+
+        <a href="#" class="btn-box">More About Me</a>
+    </div>
+
+    <div class="profile-wrapper">
+        <img src="SAVE_20250525_133348.jpg" alt="Profile Picture">
     </div>
 </section>
-<script src="main.js"></script>
-     </div>
+
+<section class="about" id="about">
+    <div class="about-img">
+        <img src="SAVE_20250525_133348.jpg" alt="about profile">
+    </div>
+    <div class="about-text">
+        <h2>About<span>Me</span></h2>
+        <h4>I'm a Full Stack Developer</h4>
+        <p>I’m a passionate Full Stack Developer with hands-on experience gained through a 3-month internship, where I worked on building responsive and dynamic web applications from scratch. I enjoy turning ideas into real, usable products using both frontend and backend technologies.
+
+On the frontend, I work with HTML, CSS, JavaScript, and Bootstrap to create clean, user-friendly interfaces. On the backend, I use Python, Node.js, and Flask to develop secure and efficient server-side applications, along with MongoDB for database management.
+
+During my internship, I gained practical experience in API integration, form validation, authentication, and deploying projects. I’m a quick learner, problem-solver, and always eager to explore new technologies and improve my development skills.</p><br>
+    
+<a href="#"class="btn-box">About Me</a>
+    
+</div>
+    
+</section>
+<section>
+    <div class="skills" id="services">
+        <div class="container">
+            <h1 class="sub-title">My<span>Services</span></h1>
+            <div class="services-list">
+                <div>
+            <i class="bx bx-tv" style="color:rgb(24, 237, 253)"></i>
+                <h2>Web development</h2>
+                <p> Web development is basically creating and maintaining websites and web applications using various programming languages </p>
+              <a href="#" class="read"> learn more</a>
+            </div>
+           <div>
+            <i class="bx bx-cloud"  style="color:rgb(24, 237, 253)"></i>
+                <h2>UI/UX</h2>
+                <p> UI/UX design involves creating user interfaces and experiences that are intuitive, visually appealing, and easy to navigate. It focuses on enhancing user satisfaction by improving usability, accessibility, and interaction design.</p>
+              <a href="#" class="read"> learn more</a>
+
+        </div>
+        <div>
+                <i class="bx bx-code" style="color:rgb(24, 237, 253)"></i>
+                <h2>Coder</h2>
+                <p> I code to build functional and efficient web applications using modern programming languages and frameworks. </p>
+              <a href="#" class="read"> learn more</a>
+    </div>
+    </div>
+    </div>
+</section>
+<section class="skills">
+
+    <h2 class="title">Technical Skills</h2>
+
+    <div class="skill">
+
+        <div class="skill-info">
+            <i class="bx bxl-html5 html-icon" style="color:rgb(241, 146, 4)"></i>
+            <span>HTML</span>
+            <span class="percent">90%</span>
         </div>
 
-    </section>
+        <div class="progress-line html"></div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-info">
+            <i class="bx bxl-css3 css-icon" style="color:rgb(7, 109, 242)"></i>
+            <span>CSS</span>
+            <span class="percent">60%</span>
+        </div>
+        <div class="progress-line css"></div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-info">
+            <i class="bx bxl-javascript js-icon" style="color:rgb(232, 199, 10)"></i>
+            <span>Javascript</span>
+            <span class="percent">85%</span>
+        </div>
+        <div class="progress-line js"></div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-info">
+            <i class="bx bxl-python py-icon" style="color:rgb(136, 4, 173)"></i>
+            <span>Python</span>
+            <span class="percent">50%</span>
+        </div>
+        <div class="progress-line python"></div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-info">
+            <i class="bx bxl-react react-icon" style="color:rgb(6, 199, 238)"></i>
+            <span>React</span>
+            <span class="percent">75%</span>
+        </div>
+        <div class="progress-line react"></div>
+    </div>
+
+</section>
+
+<section>
+<div class="portfolio" id="project">
+    <div class="main-text" id="project">    
+        <h2>Latest<span>Project</span></h2>
+
+        <div class="portfolio-container">
+
+            <div class="portfolio-card">
+                <img src="grid1.jpg" alt="backgroundimage">
+                <div class="portfolio-layer">
+                <h5>UI/UX Design</h5>
+                    <p>UI/UX design is used to design web page and many website </p>
+                    <a href="#"><i class="fa-solid fa-external-link" style="color:blue"></i></a>
+                </div>
+                </div>
+                <div class="portfolio-card">
+                <img src="grid2.jpg" alt="project image">
+                <div class="portfolio-layer">
+                <h5>UI/UX Design</h5>
+                    <p>UI/UX design is used to design web page and many website </p>
+                    <a href="#"><i class='fa-solid fa-external-link' style="color:blue;"></i></a>
+                </div>
+                </div>
+                <div class="portfolio-card">
+                <img src="grid3.jpg">
+                <div class="portfolio-layer" alt="project image">
+                <h5>UI/UX Design</h5>
+                    <p>UI/UX design is used to design web page and many website </p>
+                    <a href="#"><i class='fa-solid fa-external-link' style="color:blue;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="contact-text">
+        <h2>Contact <span>Me</span></h2>
+        <h4>Let's work Together</h4>
+        <p>UI/UX design is used to design web page and many website</p>
+        <div class="contact-list">
+            <li><i class="fa-solid fa-paper-plane"></i><span>rranjithk163@gmail.com</span></li>
+            <li><i class="fa-solid fa-phone"></i><span>9342039407</span></li>
+        </div>
+        <div class="contact-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+    </div>
+    <div class="contact-form">
+        <form action="#">
+
+    <input type="text" placeholder="Enter Your Name" required>
+    <input type="email" placeholder="Enter Your Email" required>
+    <input type="text" placeholder="Enter Your Subject" required>
+
+    <textarea cols="40" rows="10" placeholder="Enter Your Message" required></textarea>
+
+    <input type="submit" value="Submit" class="send">
+
+        </form>
+    </div>
+</section>
+<div class="last-text">
+    <p>Developed with love by Ranjith kandasamy © 2026 </p>
+</div>
+<a href="#" class="top"><i class="fa-solid fa-arrow-up"></i></a>
+<script src="main.js"></script>
 </body>
 </html>
