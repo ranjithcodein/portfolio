@@ -1,7 +1,9 @@
 var typed= new Typed(".text",{
-    strings : [,"Attacker","Web Developer"],
+    strings : ["Full Stack Developer", "Web Developer", "Software Enthusiast"],
     typeSpeed:100,
     backSpeed:100,
     backDelay:1000,
     loop:true
 });
+
+

@@ -2,13 +2,48 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #0b2d3c;
+    background: rgb(0,0,0);
     color: rgb(235, 235, 235);
+    position: relative;
 }
+
+/* Single continuous dark overlay behind all content, above the matrix canvas.
+   This replaces per-section backgrounds so there are no visible seams
+   between sections. */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(1, 7, 10, 0.6);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* FIX: was ".matrix" but the canvas uses id="matrix" in the HTML,
+   so this selector never matched anything before */
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none; /* let clicks pass through to the page */
+}
+
+.header, .home, .about, .skills, .portfolio, .contact {
+    position: relative;
+    z-index: 1;
+}
+
+
 
 .header {
     position:fixed;
@@ -16,7 +51,8 @@ body {
     left: 0;
     width: 100%;
     padding: 20px 10%;
-    background:rgb(4, 111, 117);
+    background:rgba(14, 100, 99, 0.6);
+    backdrop-filter: blur(6px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,13 +93,12 @@ body {
     width: 100%;
     justify-content: center;
     min-height: 100vh;
-    background-color: #0b2d3c;
+    background-color: transparent;
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     padding: 70px 10% 0;
-
 }
 .profile-wrapper{
     display:flex;
@@ -71,7 +106,7 @@ body {
     justify-content: center;
     width: 500px;
     height:500px;
-    border-radius: 300%;
+    border-radius: 50%;
     padding:10px;
     background:  linear-gradient(135deg,
     #00fff0,
@@ -84,7 +119,7 @@ body {
 .profile-wrapper img {
     width: 100%;
     height: 100%;
-    border-radius: 200%;
+    border-radius: 50%;
     object-fit: cover;
     background:#0b2d3c;
 }
@@ -92,9 +127,10 @@ body {
     max-width: 600px;
 }
 
-.home-content h3 {
+/* FIX: HTML uses h4/h5 inside .home-content, not h3 —
+   these rules were never applying before */
+.home-content h4 {
     font-size: 35px;
-    font-display: fallback;
     color:white;
     text-shadow:rgb(21, 66, 226) 0 0 20px;
     font-weight: 600;
@@ -103,19 +139,24 @@ body {
     animation-delay: .7s;
 }
 
-.home-content h3:nth-last-of-type(2) {
-    font-size:30px;
-    animation: slideTop 1s ease forwards;
-    animation-delay: .7s;
+.home-content h5 {
+    font-size:18px;
+    line-height: 1.6;
+    color:rgba(243, 239, 239, 0.962);
+    text-shadow:rgb(2, 34, 149) 0 0 10px;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+    margin-top: 10px;
 }
 
-.home-content h3 span {
-    color:#de0e50;
-    text-shadow: aquamarine 0 0 10px;
+.home-content h2 span {
+    color:#0ef;
+    text-shadow: rgb(2, 2, 92) 0 0 10px;
 }
 
 .home-content h2 {
-    font-size: 20px;
+    font-size: 24px;
     font-weight:600;
     text-shadow:rgb(21, 66, 226) 0 0 20px;
     opacity: 0;
@@ -134,10 +175,71 @@ body {
 
 }
 
+/* Skill badge/pill component */
+.skill-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.skill-badges .badge-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.skill-badges .badge-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0ef;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-right: 4px;
+    opacity: 1;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #aefeff;
+    background: rgba(0, 255, 255, 0.08);
+    border: 1px solid rgba(0, 255, 255, 0.35);
+    border-radius: 30px;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: default;
+    opacity: 0;
+    animation: slideLeft 0.6s ease forwards;
+}
+
+.badge:hover {
+    background: rgba(0, 255, 255, 0.18);
+    border-color: #0ef;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+    transform: translateY(-3px);
+    color: #ffffff;
+}
+
+/* Stagger badge entrance animation */
+.badge:nth-child(1) { animation-delay: 1.1s; }
+.badge:nth-child(2) { animation-delay: 1.15s; }
+.badge:nth-child(3) { animation-delay: 1.2s; }
+.badge:nth-child(4) { animation-delay: 1.25s; }
+.badge:nth-child(5) { animation-delay: 1.3s; }
+.badge:nth-child(6) { animation-delay: 1.35s; }
+.badge:nth-child(7) { animation-delay: 1.4s; }
+.badge:nth-child(8) { animation-delay: 1.45s; }
+
 .home-content p {
-    font-size: 20px;
+    font-size: 16px;
     color:rgba(243, 239, 239, 0.962);
-    text-shadow:rgb(21, 66, 226) 0 0 20px;
+    text-shadow:rgb(2, 34, 149) 0 0 20px;
     opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: 1s;
@@ -164,7 +266,7 @@ body {
 }
 
 .home-sci a:hover {
-    background: rgb(176, 22, 112);
+    background: rgb(37, 1, 82);
     color: rgba(40, 252, 238, 0.6);
     box-shadow: 0 0 20px #0ef;
 }
@@ -173,10 +275,10 @@ body {
     display: inline-flex;
     padding: 13px 28px;
     padding-top:20px;
-    background: rgb(234, 89, 178);
+    background: rgb(6, 44, 94);
     border-radius: 10px;
     font-size: 16px;
-    color: #0453b5;
+    color: #ffffff;
     letter-spacing: 1px;
     text-decoration: none;
     font-weight: 600;
@@ -194,9 +296,9 @@ body {
         0 0 100px #0453b5, 0 0 200px #0453b5;
 }
 .about{
-    background-color: #0b2d3c;
+    background-color:transparent;
     display:grid;
-    padding-top:5px;
+    padding: 60px 8%;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap:1.5rem;
@@ -205,9 +307,9 @@ body {
     display:flex;
     align-items:center;
     justify-content: center;
-    width: 500px;
-    height:500px;
-    border-radius: 300%;
+    width: 400px;
+    height:400px;
+    border-radius: 50%;
     padding:10px;
     background:  linear-gradient(135deg,
     #6fb817,
@@ -220,32 +322,34 @@ body {
 .about-img img{
     width: 100%;
     height: 100%;
-    border-radius: 200%;
+    border-radius: 50%;
     object-fit: cover;
     background:#0b2d3c;
 }
 .about-text{
-    margin-left:-80px;
+    margin-left:-30px;
 }
+
+/* FIX: "font: size 30px" is invalid CSS — should be font-size */
 .about-text h2{
-    font-size:60px;
+    font-size: 30px;
     color:rgb(69, 193, 235);
 }
 .about-text h2 span{
     color:#ffffff;
 }
 .about-text p{
-    font-size:20px;
+    font-size:15px;
     padding-top:30px;
-    text-shadow:0 0 5px rgba(0, 255, 225, 0.6),
-    0 0 10px rgba(0, 200, 255, 0.4);
+    padding-right:25px;
     text-align:left;
-    color:#aefeff;
+    color:#ffff;
 }
 .about-text h4{
     font-size:20px;
+    color:rgba(243, 239, 239, 0.962);
+    text-shadow:rgb(2, 34, 149) 0 0 20px;
     padding-top:20px;
-    color:rgb(31, 206, 237);
 
 }
 .services-box{
@@ -254,62 +358,138 @@ body {
     border-radius: 20px;
     padding: 30px;
 }
+/* ===== Services — IDE/terminal window design (CSS-only, no HTML changes needed) ===== */
+
+@keyframes blinkCursor {
+    0%, 45% { opacity: 1; }
+    46%, 100% { opacity: 0; }
+}
+
 .sub-title{
     text-align:center;
-    font-size: 60px;
-    padding-bottom: 70px;
-    text-align:center;
-    font-size: 60px;
+    font-size: 42px;
+    padding-bottom: 20px;
+    font-style: normal;
+    font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+    font-weight: 600;
+    color: #f5f5f5;
 }
-.sub-title {
-    font-style:italic;
-    padding-right:15px;
-    color:rgb(31, 206, 237);
+.sub-title::before{
+    content: "// ";
+    color: #6a9955; /* code-comment green, IDE convention */
+}
+.sub-title::after{
+    content: "|";
+    display:inline-block;
+    margin-left: 8px;
+    color: #22d3ee;
+    animation: blinkCursor 1s steps(1) infinite;
 }
 .sub-title span{
-    font-style:italic;
-    padding-left:15px;
-    color:rgb(247, 247, 247);
+    font-style:normal;
+    padding-left:10px;
+    color:#22d3ee;
+    text-shadow: 0 0 14px rgba(34, 211, 238, 0.45);
 }
+
 .container{
-    color:#5c0577;
-    padding:90px;
+    color:#e8e8e8;
+    padding: 60px 6% 90px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 .services-list{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    grid-gap:40px;
-    margin: 50px;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    grid-gap:36px;
+    margin: 30px 0 0;
 }
+
+/* Card = terminal/editor window, built entirely with pseudo-elements
+   so your existing HTML (icon, h2, p, h3, a) doesn't need to change */
 .services-list div{
-    background-color:rgba(0, 255,255,0.05);
-    padding: 40px;
+    position: relative;
+    background-color: #0b1015;
+    padding: 84px 36px 36px;
     font-size: 13px;
     font-weight:500;
-    border-right:10px;
-    border-radius:20px;
-    transition: background 0.5s, transform 0.5s;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4),
-    0 0 15px rgba(0, 255, 255, 0.2); 
+    border-radius:12px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     color:rgb(203, 204, 205);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 211, 238, 0.15);
 }
+.services-list div:hover{
+    transform: translateY(-8px);
+    border-color: rgba(34, 211, 238, 0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(34, 211, 238, 0.15);
+}
+
+/* Terminal chrome bar — drawn with background gradients, no extra markup */
+.services-list div::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 40px;
+    background: #12181f;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background-image:
+        radial-gradient(circle 5px at 22px 20px, #ff5f56 98%, transparent 100%),
+        radial-gradient(circle 5px at 40px 20px, #ffbd2e 98%, transparent 100%),
+        radial-gradient(circle 5px at 58px 20px, #27c93f 98%, transparent 100%);
+    background-repeat: no-repeat;
+}
+
+/* Filename tab in the chrome bar — text supplied per-card via nth-child below */
+.services-list div::after{
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    color: rgba(255,255,255,0.55);
+}
+.services-list div:nth-child(1)::after{ content: "web-dev.js"; }
+.services-list div:nth-child(2)::after{ content: "ui-ux.css"; }
+.services-list div:nth-child(3)::after{ content: "fullstack.py"; }
+
 .services-list div i{
-    font-size: 50px;
-   margin-bottom:30px;
+    font-size: 40px;
+    margin-bottom:24px;
+    color: #22d3ee;
 }
 .services-list div h2{
-    font-size: 30px;
-    font-weight:500;
-    margin-bottom: 15px;
-    color:#45c1eb;
-   text-shadow: 0 0 8px rgba(69,193,235 ,0.5); 
+    font-size: 26px;
+    font-weight:600;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 14px;
+    color:#f5f5f5;
 }
 .services-list div p{
-    color:#aefeff;
-    line-height:1.6;
-    text-shadow: 0 0 16px rgba(0,255,255,0.3);
+    color:#9aa5b1;
+    line-height:1.7;
+    font-size: 14px;
+    text-shadow: none;
+    margin-bottom: 6px;
 }
+
+/* Technologies line styled like a code snippet — still your original <h3> tag */
+.services-list div h3{
+    font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+    font-size: 12.5px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #9aa5b1;
+    background: rgba(255,255,255,0.03);
+    border-left: 2px solid rgba(34, 211, 238, 0.4);
+    padding: 12px 14px;
+    border-radius: 4px;
+    margin: 15px 0;
+    word-break: break-word;
+}
+
 .services-list div a{
     text-decoration: none;
     color: rgb(7, 189, 255);
@@ -320,22 +500,22 @@ body {
 .read{
     display: inline-block;
     padding:12px 25px;
-    background:rgb(1, 13, 240);
+    background:rgb(1, 6, 93);
     border-radius: 40px;
     font-size:16px;
-    color:rgba(38, 8, 229, 0.967);
+    color:#7fd7ff;
     letter-spacing: 1px;
     text-decoration:none;
     font-weight: 600;
     opacity: 0;
     animation: slideTop  3s ease forwards;
     animation-delay:2s;
-    box-shadow: 0 0 5px #b100ff,
-    0 0 100px #b100ff;
+    box-shadow: 0 0 5px #02095b,
+    0 0 100px #65038e;
      
 }  
 .read:hover{
- box-shadow: 0 0 5px #8c04b5,
+ box-shadow: 0 0 5px #160169,
         0 0 25px #8c04b5, 0 0 50px #8c04b5,
         0 0 100px #b50480, 0 0 200px #b5047a;
 }
@@ -344,8 +524,8 @@ body {
 }
 .skills {
     padding: 80px 10%;
-    background: #0b2d3c;
     color: white;
+    background: transparent;
 }
 
 .title {
@@ -383,36 +563,34 @@ body {
 }
 
 /* Progress Line Background */
-.progress-line {
+.progress-bar {
     position: relative;
     height: 6px;
     width: 100%;
     background: rgba(255,255,255,0.2);
     border-radius: 10px;
+    overflow: hidden;
 }
 
 /* Fill Effect */
-.progress-line::before {
+.progress-bar::before {
     content: "";
     position: absolute;
     height: 100%;
     border-radius: 10px;
     background: #45c1eb;
-}
-
-/* Widths */
-.progress-line.html::before { width: 90%; }
-.progress-line.css::before { width: 60%; }
-.progress-line.js::before { width: 85%; }
-.progress-line.python::before { width: 50%; }
-.progress-line.react::before { width: 75%; }
-
-/* Optional Glow */
-.progress-line::before {
     box-shadow: 0 0 10px #45c1eb;
 }
 
+/* Widths */
+.progress-bar.html::before { width: 90%; }
+.progress-bar.css::before { width: 60%; }
+.progress-bar.js::before { width: 85%; }
+.progress-bar.python::before { width: 50%; }
+.progress-bar.react::before { width: 75%; }
+
 .portfolio{
+    background: transparent;
     padding:50px 10%;
 }
 .portfolio-container{
@@ -454,6 +632,7 @@ body {
 }
 .portfolio-layer h5{
     color:#000;
+    font-family:'Fira Code', 'JetBrains Mono', Consolas, monospace;
     font-size:20px;
     font-weight:600;
     margin-bottom:15px;
@@ -492,7 +671,7 @@ body {
     margin-top:130px;
 }
 .contact-text h2{
-    font-size:70px;
+    font-size:50px;
     line-height:1;
     text-align:center;
     padding:1rem;
@@ -518,10 +697,7 @@ body {
 }
 .contact-list{
     margin-bottom:1rem;
-}
-.contact-list li{
-    margin-bottom: 10px;
-    display:block;
+    list-style: none;
 }
 .contact-list li{
     margin-bottom:10px;
@@ -530,7 +706,6 @@ body {
 .contact-list i{
     display:inline-block;
     color:#0ef;
-    padding-left:px;
     font-size:20px;
     font-weight:600;
     transition: all .40s ease;
@@ -539,17 +714,17 @@ body {
     padding-left:20px;
 }
 .contact-list li a:hover{
-    transform:scale(1.01) tranlate(-5px);
+    transform:scale(1.01) translate(-5px);
     color:#0ef;
 }
 .contact-icons i{
-    display:inline-block;
+    display:inline-flex;
     justify-content: center;
     align-items: center;
     width: 40px;
     height: 40px;
     background: transparent;
-    border-radius: 2px solid #0ef;
+    border: 2px solid #0ef;
     border-radius: 50%;
     font-size:20px;
     color:#0ef;
@@ -558,7 +733,7 @@ body {
     transition: .5s ease;
     opacity:0;
     animation:slideLeft 1s ease forwards;
-    animation-delay: calc(.2s * var(--i));
+    animation-delay: calc(.2s * var(--i, 1));
 }
 .contact-icons i:hover{
     background: #0ef;
@@ -568,7 +743,12 @@ body {
 .contact-form form{
     position:relative;    
 }
-.contact-form form input.form textarea{
+
+/* FIX: original selector "input.form textarea" matched nothing
+   (no element has class="form", and textarea isn't nested inside input).
+   Replaced with a selector that actually targets your form fields. */
+.contact-form form input,
+.contact-form form textarea{
     border:none;
     outline:none;
     width:90%;
@@ -579,12 +759,15 @@ body {
     font-weight:600;
     margin-bottom: 0.5rem;
     border-radius: 0.5rem;
+    display: block;
 }
-.contact-form text{
+
+/* FIX: was ".contact-form text" (typo) — should target textarea */
+.contact-form form textarea{
     resize:none;
     height:220px;
-
 }
+
 .contact-form form .send{
      display: inline-block;
     padding:12px 25px;
@@ -600,6 +783,8 @@ body {
     animation-delay:2s;
     box-shadow: 0 0 5px #b100ff,
     0 0 100px #b100ff;
+    border: none;
+    cursor: pointer;
 
 }
 .contact-form form .send:hover{
@@ -613,7 +798,7 @@ body {
     width:100%;
     text-align:center;
     padding:25px 0;
-    background: rgb(7, 85, 91);
+    background: rgb(0, 30, 94);
     font-weight: 300;
     margin-top: 70px;
 
@@ -621,7 +806,7 @@ body {
 .top{
     position: fixed;
     bottom:2.1rem;
-    right:2,1rem;
+    right:2.1rem;
 }
 .top i{
     color:#000;
@@ -635,11 +820,6 @@ body {
 
 
 
-@keyframes animate{
-    100%{
-        transform:scaleX(1);
-    }
-}
 @keyframes floatAnimation {
 
     0% {
@@ -700,7 +880,3 @@ body {
         opacity: 1;
     }
 }
-
-
-
-
