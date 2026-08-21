@@ -50,7 +50,7 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 10%;
+    padding: 10px 10%;
     background:rgba(14, 100, 99, 0.6);
     backdrop-filter: blur(6px);
     display: flex;
