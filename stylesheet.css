@@ -816,10 +816,6 @@ body::before {
     border-radius: 0.5rem;
 }
 
-
-
-
-
 @keyframes floatAnimation {
 
     0% {
@@ -880,3 +876,270 @@ body::before {
         opacity: 1;
     }
 }
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+
+/* Tablets and mobile */
+@media (max-width: 768px) {
+
+    /* Header / Navbar */
+    .header {
+        padding: 12px 5%;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar a {
+        font-size: 16px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /* Home section */
+    .home {
+        min-height: auto;
+        padding: 140px 6% 60px;
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .home-content {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .home-content h1 {
+        font-size: 38px;
+        line-height: 1.2;
+    }
+
+    .home-content h2 {
+        font-size: 22px;
+    }
+
+    .home-content h4 {
+        font-size: 26px;
+    }
+
+    .home-content h5,
+    .home-content p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* Profile image */
+    .profile-wrapper {
+        width: min(75vw, 350px);
+        height: min(75vw, 350px);
+        flex-shrink: 0;
+    }
+
+    /* Skills badges */
+    .skill-badges {
+        justify-content: center;
+    }
+
+    .skill-badges .badge-group {
+        justify-content: center;
+    }
+
+    /* About */
+    .about {
+        grid-template-columns: 1fr;
+        padding: 70px 6%;
+        text-align: center;
+    }
+
+    .about-img {
+        width: min(75vw, 350px);
+        height: min(75vw, 350px);
+        margin: 0 auto;
+    }
+
+    .about-text {
+        margin-left: 0;
+    }
+
+    .about-text h2 {
+        font-size: 28px;
+    }
+
+    .about-text p {
+        padding-right: 0;
+        text-align: center;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* Services */
+    .container {
+        padding: 50px 6%;
+    }
+
+    .sub-title {
+        font-size: 32px;
+    }
+
+    .services-list {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .services-list div {
+        padding: 70px 25px 30px;
+    }
+
+    /* Skills */
+    .skills {
+        padding: 60px 6%;
+    }
+
+    .title {
+        font-size: 32px;
+        margin-bottom: 35px;
+    }
+
+    /* Portfolio */
+    .portfolio {
+        padding: 50px 6%;
+    }
+
+    .portfolio-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .portfolio-card img {
+        height: auto;
+        max-height: 400px;
+    }
+
+    /* Contact */
+    .contact {
+        grid-template-columns: 1fr;
+        padding: 50px 6%;
+        margin-top: 50px;
+        gap: 40px;
+    }
+
+    .contact-text h2 {
+        font-size: 38px;
+        padding: 0;
+    }
+
+    .contact-text h4 {
+        font-size: 21px;
+        padding-left: 0;
+    }
+
+    .contact-text p {
+        font-size: 16px;
+        line-height: 1.7;
+        padding-left: 0;
+    }
+
+    .contact-form form input,
+    .contact-form form textarea {
+        width: 100%;
+    }
+
+    .contact-form form textarea {
+        height: 180px;
+    }
+
+    /* Back to top */
+    .top {
+        right: 1rem;
+        bottom: 1rem;
+    }
+}
+
+
+/* Small mobile phones */
+@media (max-width: 480px) {
+
+    .header {
+        padding: 10px 3%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .navbar a {
+        font-size: 14px;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+
+    .home {
+        padding: 130px 5% 50px;
+        gap: 30px;
+    }
+
+    .home-content h1 {
+        font-size: 32px;
+    }
+
+    .home-content h2 {
+        font-size: 19px;
+    }
+
+    .home-content h4 {
+        font-size: 23px;
+    }
+
+    .home-content h5,
+    .home-content p {
+        font-size: 14px;
+    }
+
+    .profile-wrapper {
+        width: 280px;
+        height: 280px;
+    }
+
+    .badge {
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+
+    .sub-title {
+        font-size: 26px;
+    }
+
+    .services-list div h2 {
+        font-size: 22px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .contact-text h2 {
+        font-size: 32px;
+    }
+}
+
+
+/* Prevent horizontal scrolling */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+

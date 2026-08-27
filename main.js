@@ -63,4 +63,4 @@ var typed= new Typed(".text",{
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   });
-});
+
